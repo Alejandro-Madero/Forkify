@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,600,700"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="src/img/favicon.png" type="image/x-icon" />
+
+    <link rel="stylesheet" href="src/sass/main.scss" />
+    <script type="module" src="src/js/controller.js"></script>
+
+    <title>forkify // Search over 1,000,000 recipes</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <header class="header">
+        <img src="src/img/logo.png" alt="Logo" class="header__logo" />
+        <form class="search">
+          <input
+            type="text"
+            class="search__field"
+            placeholder="Search over 1,000,000 recipes..."
+          />
+          <button class="btn search__btn">
+            <svg class="search__icon">
+              <use href="src/img/icons.svg#icon-search"></use>
+            </svg>
+            <span>Search</span>
+          </button>
+        </form>
+
+        <nav class="nav">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <button class="nav__btn nav__btn--add-recipe">
+                <svg class="nav__icon">
+                  <use href="src/img/icons.svg#icon-edit"></use>
+                </svg>
+                <span>Add recipe</span>
+              </button>
+            </li>
+            <li class="nav__item">
+              <button class="nav__btn nav__btn--bookmarks">
+                <svg class="nav__icon">
+                  <use href="src/img/icons.svg#icon-bookmark"></use>
+                </svg>
+                <span>Bookmarks</span>
+              </button>
+              <div class="bookmarks">
+                <ul class="bookmarks__list">                  
+                  <div class="message">
+                    <div class = "bookmarks__icon">
+                        <svg>
+                            <use href="src/img/icons.svg#icon-alert-triangle"></use>
+                        </svg>
+                    </div>
+                        <p> No bookmarks yet. Find a nice recipe and bookmark it :)
+                        </p>
+                  </div>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <div class="search-results">
+        <ul class="results">        
+          <!-- <div class="preview__user-generated">
+            <svg>
+              <use href="${icons}#icon-user"></use>
+            </svg>
+          </div> -->
+        </ul>
+
+        <div class="pagination">
+          <!-- <button class="btn--inline pagination__btn--prev">
+            <svg class="search__icon">
+              <use href="src/img/icons.svg#icon-arrow-left"></use>
+            </svg>
+            <span>Page 1</span>
+          </button>
+          <button class="btn--inline pagination__btn--next">
+            <span>Page 3</span>
+            <svg class="search__icon">
+              <use href="src/img/icons.svg#icon-arrow-right"></use>
+            </svg>
+          </button> -->
+        </div>
+        <!-- 
+        <p class="copyright">
+          &copy; Copyright by
+          <a
+            class="twitter-link"
+            target="_blank"
+            href="https://twitter.com/jonasschmedtman"
+            >Jonas Schmedtmann</a
+          >. Use for learning or your portfolio. Don't use to teach. Don't claim
+          as your own.
+        </p> -->
+      </div>
+
+      <div class="recipe">
+       
+        </div>   
+     
+       
+      </div>
+    </div>
+
+    <div class="overlay hidden"></div>
+    <div class="add-recipe-window hidden">
+      <button class="btn--close-modal">&times;</button>
+      <form class="upload">
+        <div class="upload__column">
+          <h3 class="upload__heading">Recipe data</h3>
+
+         <div class="upload__column--data">
+            <label for="title" class="label__data">Title</label>   
+            <input id="title" value="" name="title" type="text" placeholder="Enter recipe title" required/>
+        </div>
+        
+        <div class="upload__column--data">
+          <label for="url"  class="label__data">URL</label> 
+          <input id="url" value="" name="sourceUrl" type="text" placeholder="Enter recipe URL" required/>
+        </div>
+
+        <div class="upload__column--data">
+          <label for="imageUrl" class="label__data">Image URL</label>
+          <input id="imageUrl" value="" name="image" type="text" placeholder="Enter recipe image URL" required />
+        </div>
+        
+        <div class="upload__column--data">
+          <label for="publisher" class="label__data">Publisher</label>
+          <input id="publisher" value="" name="publisher" type="text" placeholder="Enter publisher name" required/>
+        </div>
+        
+        <div class="upload__column--data">
+          <label for="cookingTime" class="label__data">Prep time</label>
+          <input id="cookingTime" value=""  name="cookingTime" type="number" placeholder="Enter preparation time in minutes" required />
+        </div>
+        
+        <div class="upload__column--data">
+          <label for="servings" class="label__data">Servings</label>
+          <input id="servings" value="" name="servings" type="number" placeholder="Enter number of servings" required />
+        </div>
+        </div>
+
+        <div class="upload__column">
+          <h3 class="upload__heading">Ingredients</h3> 
+
+          <div class="ingredients__container">
+            <label for="qty1">Quantity</label>
+            <input
+              id="qty1"
+              class="input__ing"
+              value=""
+              type="text"
+              required
+              name="qty-1"
+              placeholder="e.g. 1"
+            />
+            <label for="unit1">Unit</label>
+            <input
+            class="input__ing"
+              id="unit1"
+              value=""
+              type="text"
+              required
+              name="unit-1"
+              placeholder="e.g. kg"
+            />
+            <label for="description1">Description</label>
+            <input
+              id="description1"
+              class="input__ing--description"
+              value=""
+              type="text"
+              required
+              name="description-1"
+              placeholder="Ingredient description"
+            />
+        </div>
+
+        <div class="ingredients__container">
+          <label for="qty2">Quantity</label>
+          <input
+            id="qty2"
+            class="input__ing"
+            value=""
+            type="text"            
+            name="qty-2"
+            placeholder="e.g. 2"
+          />
+
+          <label for="unit2">Unit</label>
+          <input
+          class="input__ing"
+            id="unit2"
+            value=""
+            type="text"            
+            name="unit-2"
+            placeholder="e.g. kg"
+          />
+          <label for="description2">Description</label>
+          <input
+            id="description2"
+            class="input__ing--description"
+            value=""
+            type="text"            
+            name="description-2"
+            placeholder="Ingredient description"
+          />
+        </div>
+
+        <div class="ingredients__container">
+          <label for="qty3">Quantity</label>
+          <input
+            id="qty3"
+            class="input__ing"
+            value=""
+            type="text"            
+            name="qty-3"
+            placeholder="e.g. 3"
+          />
+
+          <label for="unit3">Unit</label>
+          <input
+          class="input__ing"
+            id="unit3"
+            value=""
+            type="text"            
+            name="unit-3"
+            placeholder="e.g. kg"
+          />
+          <label for="description3">Description</label>
+          <input
+            id="description3"
+            class="input__ing--description"
+            value=""
+            type="text"            
+            name="description-3"
+            placeholder="Ingredient description"
+          />
+        </div>
+
+        <div class="ingredients__container">
+          <label for="qty4">Quantity</label>
+          <input
+            id="qty4"
+            class="input__ing"
+            value=""
+            type="text"            
+            name="qty-4"
+            placeholder="e.g. 4"
+          />
+
+          <label for="unit4">Unit</label>
+          <input
+          class="input__ing"
+            id="unit4"
+            value=""
+            type="text"            
+            name="unit-4"
+            placeholder="e.g. kg"
+          />
+          <label for="description4">Description</label>
+          <input
+            id="description4"
+            class="input__ing--description"
+            value=""
+            type="text"            
+            name="description-4"
+            placeholder="Ingredient description"
+          />
+        </div>
+
+        <div class="ingredients__container">
+          <label for="qty5">Quantity</label>
+          <input
+            id="qty5"
+            class="input__ing"
+            value=""
+            type="text"            
+            name="qty-5"
+            placeholder="e.g. 5"
+          />
+
+          <label for="unit5">Unit</label>
+          <input
+          class="input__ing"
+            id="unit5"
+            value=""
+            type="text"            
+            name="unit-5"
+            placeholder="e.g. kg"
+          />
+          <label for="description5">Description</label>
+          <input
+            id="description5"
+            class="input__ing--description"
+            value=""
+            type="text"            
+            name="description-5"
+            placeholder="Ingredient description"
+          />
+        </div>
+
+        <div class="ingredients__container">
+          <label for="qty6">Quantity</label>
+          <input
+            id="qty6"
+            class="input__ing"
+            value=""
+            type="text"            
+            name="qty-6"
+            placeholder="e.g. 6"
+          />
+
+          <label for="unit6">Unit</label>
+          <input
+          class="input__ing"
+            id="unit6"
+            value=""
+            type="text"            
+            name="unit-6"
+            placeholder="e.g. kg"
+          />
+          <label for="description6">Description</label>
+          <input
+            id="description6"
+            class="input__ing--description"
+            value=""
+            type="text"            
+            name="description-6"
+            placeholder="Ingredient description"
+          />
+        </div>
+      </div>
+
+        <div class="btns__container upload__btn">
+          <button class="btn clear__btn">
+            <svg>
+              <use href="src/img/icons.svg#icon-clear"></use>
+            </svg>
+            <span>Clear fields</span>
+          </button>     
+          <button class="btn upload__btn">
+            <svg>
+              <use href="src/img/icons.svg#icon-upload-cloud"></use>
+            </svg>
+            <span>Upload</span>
+          </button>               
+        </div>
+        
+      </form>
+     
+    </div>
+  </body>
+</html>
